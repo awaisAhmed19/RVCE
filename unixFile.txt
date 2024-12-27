@@ -1,0 +1,4 @@
+unix filesystems 
+unix commands 
+unix file permissions
+shell commands and how to make automated script
