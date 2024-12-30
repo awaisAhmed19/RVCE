@@ -1,176 +1,164 @@
-import java.util.*;
-class BankAcc{
-    static int Accounts=0;
-    String Cname, Acc_type,T_type ;
-    int deposit;
-    int Bal;
-    int amt;
-    BankAcc(){
-      this.Cname=null;
-      this.Acc_type=null;
-      this.Bal=0;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Account {
+    String accountHolderName;
+    String accountType;
+    double balance;
+    static int totalAccounts = 0; // Static variable to track the number of accounts
+    static double totalAmount = 0; // Static variable to track the total balance across all accounts
+
+    // Constructor 1: Only account holder's name (default account type is "Saving" with balance 0)
+    public Account(String name) {
+        this.accountHolderName = name;
+        this.accountType = "Saving";
+        this.balance = 0;
+        totalAccounts++;
+        System.out.println("Account created: Name=" + name + ", Type=Saving, Balance=0");
     }
 
-    BankAcc(String Cname,String Acc_type){
-      this.Cname=Cname;
-      this.Acc_type=Acc_type;
-      this.Bal=0;
-    }
-    
-    static boolean is_valid_amount(int amt){
-      return (amt>50&&amt<100000); 
-    }
-    
-    static boolean is_valid_Account(String Acc_type){
-      return Acc_type.equalsIgnoreCase("saving")||Acc_type.equalsIgnoreCase("current");
+    // Constructor 2: Name and an initial deposit
+    public Account(String name, double initialDeposit) {
+        this(name); // Call the first constructor
+        if (initialDeposit < 0) {
+            throw new IllegalArgumentException("Initial deposit cannot be negative.");
+        }
+        this.balance = initialDeposit;
+        totalAmount += initialDeposit;
+        System.out.println("Account created: Name=" + name + ", Type=Saving, Balance=" + initialDeposit);
     }
 
-    static boolean is_valid_T_type(String T_type){
-      return T_type.equalsIgnoreCase("cash")||T_type.equalsIgnoreCase("cheque");
-    }
-    void Deposit(int amt, String T_type ){
-      if(!(is_valid_T_type(T_type))){ 
-        System.out.println("Invalid Transaction type please check the spelling");
-        return;
-      }
-      if (!(is_valid_amount(amt))){
-        if(amt<50){
-          System.out.println("the amount must be more than 50 RS");
+    // Constructor 3: Name, initial deposit, and account type
+    public Account(String name, double initialDeposit, String type) {
+        this(name, initialDeposit); // Call the second constructor
+        if (!type.equalsIgnoreCase("Saving") && !type.equalsIgnoreCase("Current")) {
+            throw new IllegalArgumentException("Invalid account type. Must be 'Saving' or 'Current'.");
         }
-        else{System.out.println("the amount must be less than 100000 RS");
-        }
-        return;
-      }
-      else{
-        this.Bal+=amt;
-        this.T_type=T_type;
-      }
-    }
-    
-    void Deposit(int amt){
-      
-      if (!(is_valid_amount(amt))){
-        if(amt<50){
-          System.out.println("the amount must be more than 50 RS");
-        }
-        else{System.out.println("the amount must be less than 100000 RS");
-        }
-        return;
-      }
-      else{
-        this.Bal+=amt;
-      }
+        this.accountType = type;
+        System.out.println("Account created: Name=" + name + ", Type=" + type + ", Balance=" + initialDeposit);
     }
 
-    void Display(){
-      System.out.println("The Name of the customer "+this.Cname);
-      System.out.println("The Balance of the customer "+this.Bal);
-      System.out.println("The Account Type of the customer "+this.Acc_type);
+    // Deposit method 1: Specify only the amount
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Deposit amount must be positive.");
+        }
+        this.balance += amount;
+        totalAmount += amount;
+        System.out.println("Deposited " + amount + " to " + accountHolderName + "'s account. New balance: " + balance);
     }
-  static void choice(){
-    System.out.println("Enter a Choice between 0 to 5");
-    System.out.println("1 --to add an account");
-    System.out.println("2 --to to remove the account");
-    System.out.println("3 --to to make a deposit");
-    System.out.println("4 --to display all the accounts ");
-    System.out.println("5 --to quit"); 
-  }
-  public static void main(String[] args){
-    Scanner in =new Scanner(System.in);
-    ArrayList<BankAcc> b=new ArrayList<>();
-    choice();
-    int choice=in.nextInt();
-    while(choice>0 && choice!=5){
-      switch(choice){
-        case 1: System.out.println("enter the name and account type");
-                System.out.println("Enter the customer name:");
-                in.nextLine();
-                String name=in.nextLine();
-                System.out.println("Press 1 for Savings account");
-                System.out.println("Press 2 for current account");
-                int Ac_ch=in.nextInt();
-                if (Ac_ch==1){
-                    System.out.println("you have choosen savings account");
-                    b.add(new BankAcc(name,"Savings"));
-                }else{
-                    System.out.println("you have choosen current account"); 
-                    b.add(new BankAcc(name,"Current"));
-                }
-        break;
-        case 2: System.out.println("enter the Name of the Account holder that needs to be deleted");
-                in.nextLine();
-                String Rname=in.nextLine();
-                int flag=0;
-                for(int i=0;i<b.size();i++){
-                  if(b.get(i).Cname.equalsIgnoreCase(Rname)){
-                     System.out.println("Are you sure you want to delete the account? y or n");
-                     in.next();
-                     String ch=in.next();
-                     if(ch.equalsIgnoreCase("y")){
-                        b.remove(i);
-                        flag=1;
-                     }
-                     else if(ch.equalsIgnoreCase("n")){
-                        break;
-                     }
-                  }
-                }
-                if(flag==0){
-                  System.out.println("ACCOUNT HOLDER NAME NOT FOUND");
-                }
-        break;
-        case 3:System.out.println("Enter the account holder name you would like to deposit to");
-               in.nextLine();
-               String Dname=in.nextLine();
-               int dflag=0,index=-1;
-               
-               for (int i=0;i<b.size();i++){
-                  if(b.get(i).Cname.equalsIgnoreCase(Dname)){
-                      dflag=1;
-                      index=i;
-                      break;
-                  }
-               }
-               if(dflag==1){
-                  System.out.println("Enter the amount you would like to deposit");
-                  int amount=in.nextInt();
-                  int T_type=0;
-                  System.out.println("Enter the choice of Transcation you are using default[0]");
-                  System.out.println("1 --for Cash");
-                  System.out.println("2 --for Cheque");
-                  T_type=in.nextInt();
-                  if(T_type!=0&&index!=-1){
-                    if (T_type==1){
-                      b.get(index).Deposit(amount,"Cash");
-                    }else{
-                      b.get(index).Deposit(amount,"Cheque");
+
+    // Deposit method 2: Specify both the amount and transaction type
+    public void deposit(double amount, String transactionType) {
+        if (!transactionType.equalsIgnoreCase("Cash") && !transactionType.equalsIgnoreCase("Cheque")) {
+            throw new IllegalArgumentException("Invalid transaction type. Must be 'Cash' or 'Cheque'.");
+        }
+        deposit(amount); // Call the first deposit method
+        System.out.println("Transaction type: " + transactionType);
+    }
+
+    // Static method to display total accounts and total balance
+    public static void displaySummary() {
+        System.out.println("Total accounts: " + totalAccounts);
+        System.out.println("Total balance across all accounts: " + totalAmount);
+    }
+
+    // Method to display account details
+    public void displayAccount() {
+        System.out.println("Name: " + accountHolderName + ", Type: " + accountType + ", Balance: " + balance);
+    }
+}
+
+// Main class to handle banking app operations
+public class BankingApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Account> accounts = new ArrayList<>();
+        
+        while (true) {
+            System.out.println("\nBanking App Menu:");
+            System.out.println("1. Create account (Name only)");
+            System.out.println("2. Create account (Name and initial deposit)");
+            System.out.println("3. Create account (Name, initial deposit, and account type)");
+            System.out.println("4. Deposit money");
+            System.out.println("5. Display all accounts");
+            System.out.println("6. Display bank summary");
+            System.out.println("7. Exit");
+            System.out.print("Enter your choice: ");
+            
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter account holder name: ");
+                    String name1 = scanner.nextLine();
+                    accounts.add(new Account(name1));
+                    break;
+                
+                case 2:
+                    System.out.print("Enter account holder name: ");
+                    String name2 = scanner.nextLine();
+                    System.out.print("Enter initial deposit: ");
+                    double deposit2 = scanner.nextDouble();
+                    accounts.add(new Account(name2, deposit2));
+                    break;
+
+                case 3:
+                    System.out.print("Enter account holder name: ");
+                    String name3 = scanner.nextLine();
+                    System.out.print("Enter initial deposit: ");
+                    double deposit3 = scanner.nextDouble();
+                    scanner.nextLine(); // Consume newline
+                    System.out.print("Enter account type (Saving/Current): ");
+                    String type3 = scanner.nextLine();
+                    accounts.add(new Account(name3, deposit3, type3));
+                    break;
+
+                case 4:
+                    System.out.print("Enter account holder name: ");
+                    String depName = scanner.nextLine();
+                    boolean accountFound = false;
+                    for (Account acc : accounts) {
+                        if (acc != null && acc.toString().contains(depName)) {
+                            accountFound = true;
+                            System.out.print("Enter deposit amount: ");
+                            double depAmount = scanner.nextDouble();
+                            System.out.print("Enter transaction type (Cash/Cheque or leave empty): ");
+                            scanner.nextLine();
+                            String depType = scanner.nextLine();
+                            if (depType.isEmpty()) {
+                                acc.deposit(depAmount);
+                            } else {
+                                acc.deposit(depAmount, depType);
+                            }
+                            break;
+                        }
                     }
-                  }
-                  else if(T_type>2 || T_type<0 ||index==-1){
-                    System.out.println("INVALID INPUT");
-                  }
-                  else{
-                    if (index!=-1){
-                      b.get(index).Deposit(amount);
+                    if (!accountFound) {
+                        System.out.println("Account not found.");
                     }
-                    else{
-                      System.out.println("Index not found");
-                    }
-                  }
-               }else{
-                 System.out.println("ACCOUNT NOT FOUND");
-               }
-        break;
-         case 4: for(BankAcc acc:b){
-                   acc.Display();
-         }
-         break;
-         case 5: System.exit(0);
-          break;
-      }
-      choice();
-      choice=in.nextInt();
-    }
+                    break;
 
-  }
+                case 5:
+                    for (Account acc : accounts) {
+                        acc.displayAccount();
+                    }
+                    break;
+
+                case 6:
+                    Account.displaySummary();
+                    break;
+
+                case 7:
+                    System.out.println("Exiting the Banking App. Goodbye!");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
 }
