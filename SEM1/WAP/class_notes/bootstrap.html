@@ -1,21 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>bootstrap </title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bootstrap</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
-     <div class="mb-3">
-        <h1>Highlight Text </h1>
-        <p> Use element to <mark>highlight</mark></p>
-        <button class="btn btn-primary">Primary Button</button>
-        <button class="btn btn-danger">Danger Button</button>
-        <h1 class="display-1">Heading 1</h1>
-        <p class="text-primary">This is a blue paragraph.</p>
-        <p class="text-muted">This is muted text.</p>
-     </div>
+    <div class="mb-3">
+      <h1>Highlight Text</h1>
+      <p>Use element to <mark>highlight</mark></p>
+      <button class="btn btn-primary">Primary Button</button>
+      <button class="btn btn-danger">Danger Button</button>
+      <h1 class="display-1">Heading 1</h1>
+      <p class="text-primary">This is a blue paragraph.</p>
+      <p class="text-muted">This is muted text.</p>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S. No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">City</th>
+          <th scope="col">Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Ajay</td>
+          <td>Patna</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Rahul</td>
+          <td>Chandigarh</td>
+          <td>17</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Parush</td>
+          <td>Kolkata</td>
+          <td>22</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <button type="button" class="btn btn-outline-primary" disabled>
+      Primary
+    </button>
+
+    <button type="button" class="btn btn-outline-primary">
+      <span class="spinner-border"></span>Loading
+    </button>
   </body>
 </html>
