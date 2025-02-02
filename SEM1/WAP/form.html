@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout with Bootstrap</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <!-- First Row: Full-width on mobile, 6 columns on medium, 4 columns on large screens -->
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="bg-primary text-white p-3">Column 1</div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="bg-secondary text-white p-3">Column 2</div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="bg-success text-white p-3">Column 3</div>
+        </div>
+    </div>
+
+    <!-- Second Row: Full-width on mobile, 3 columns on medium, 2 columns on large screens -->
+    <div class="row">
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="bg-danger text-white p-3">Column 4</div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="bg-warning text-white p-3">Column 5</div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="bg-info text-white p-3">Column 6</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <button type="button" class="btn btn-primary">Primary Button</button>
+    <button type="button" class="btn btn-secondary">Secondary Button</button>
+    <button type="button" class="btn btn-success">Success Button</button>
+    <button type="button" class="btn btn-danger">Danger Button</button>
+    <button type="button" class="btn btn-warning">Warning Button</button>
+    <button type="button" class="btn btn-info">Info Button</button>
+    <button type="button" class="btn btn-light">Light Button</button>
+    <button type="button" class="btn btn-dark">Dark Button</button>
+    <button type="button" class="btn btn-link">Link Button</button>
+</div>
+<div class="container">
+    <table class="table table-striped table-bordered table-hover table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John Doe</td>
+                <td>28</td>
+                <td>New York</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jane Smith</td>
+                <td>34</td>
+                <td>San Francisco</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <div class="jumbotron bg-dark text-white">
+        <h1 class="display-4">Welcome to Bootstrap</h1>
+        <p class="lead">This is a simple hero unit, a jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+</div>
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
