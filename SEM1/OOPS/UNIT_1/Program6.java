@@ -1,17 +1,14 @@
 import java.util.Scanner;
 
-// Custom Exception for Age Restriction
 class AgeRestrictionException extends Exception {
     public AgeRestrictionException(String message) {
         super(message);
     }
 }
 
-// Class containing the verification methods
-public class Program6{
+public class Program6 {
 
-    // Method to check age eligibility using throws
-    public static void verifyAge(int age) throws AgeRestrictionException, IllegalArgumentException {
+    public static void verifyAge(int age) throws AgeRestrictionException{
         if (age < 0) {
             throw new IllegalArgumentException("Age cannot be negative."); // Predefined Exception
         }
@@ -21,8 +18,7 @@ public class Program6{
         System.out.println("Access Granted! You are eligible for the service.");
     }
 
-    // Method to perform division and handle division by zero
-    public static double divide(int dividend, int divisor) throws ArithmeticException {
+    public static double divide(int dividend, int divisor) {
         if (divisor == 0) {
             throw new ArithmeticException("Error: Division by zero is not allowed."); // Predefined Exception
         }
@@ -33,20 +29,16 @@ public class Program6{
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Taking age input
             System.out.print("Enter your age: ");
             int age = scanner.nextInt();
 
-            // Checking age criteria
             verifyAge(age);
 
-            // Taking input for division
             System.out.print("Enter dividend: ");
             int dividend = scanner.nextInt();
             System.out.print("Enter divisor: ");
             int divisor = scanner.nextInt();
 
-            // Performing division
             double result = divide(dividend, divisor);
             System.out.println("Result of division: " + result);
         } 
