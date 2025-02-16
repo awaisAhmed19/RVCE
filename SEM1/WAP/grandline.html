@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bookstore - Home</title>
+    <link
+      href="http://172.16.34.53/web/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <!-- navbar-expand-lg is used for displaying the full menu content on large screen -->
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bookstore</a>
+        <!-- navbar-brand used to style the brand or logo that appears within a navigation bar -->
+        <!-- navbar-collapse -->
+        <div class="collapse navbar-collapse">
+          <!-- The .navbar-nav class provides default styling for the overall group of navigation links, such as spacing, alignment, and responsiveness. -->
+          <!-- The .ms-auto class is used to push an element to the right side of its container. -->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <!--  Provides basic styling for each navigation item, such as spacing, display properties, and potentially some padding.  -->
+              <!-- nav-link: This is a Bootstrap CSS class that provides default styling for navigation links. It often includes things like color, font size, and hover effects. -->
+              <!-- This is another Bootstrap CSS class that is specifically used to style the currently active or selected navigation item. 
+                        This usually involves visual cues like a different background color, a different font weight, or a border to indicate the current page to the user. -->
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalogue.html">Books Catalogue</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profile.html">User Profile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- This prefix stands for "margin-y", indicating that the margin will be applied to both the top (margin-top) and bottom (margin-bottom) of the element. -->
+    <div class="container text-center my-5">
+      <h1>Welcome to the Bookstore!</h1>
+      <p>Explore our wide range of books and manage your profile.</p>
+      <a href="catalogue.html" class="btn btn-primary">Explore Books</a>
+    </div>
+
+    <script src="http://172.16.34.53/web/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+  <!-- Footer -->
+  <!-- &copy; : Used for copyright -->
+  <footer class="footer bg-light text-center py-3 mt-5">
+    <p>&copy; 2025 Bookstore. All rights reserved.</p>
+  </footer>
+</html>
