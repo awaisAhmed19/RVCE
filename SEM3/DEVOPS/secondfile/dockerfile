@@ -1,0 +1,12 @@
+
+# To run a simple container
+
+# Use an existing docker image as a base
+FROM alpine
+
+# Download and install a dependency
+RUN apk add --update redis
+
+# Communicate the process
+CMD ["redis-server"]
+
